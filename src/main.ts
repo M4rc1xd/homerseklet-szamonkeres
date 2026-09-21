@@ -4,6 +4,7 @@ import './style.css'
 async function loadTable() {
   const data = await getData();
   const table = document.getElementById("table") as HTMLTableElement;
+  table.innerHTML = "";
   const row = document.createElement("tr");
   const header1 = document.createElement("th");
   header1.textContent = "Nap";
@@ -13,7 +14,6 @@ async function loadTable() {
   row.appendChild(header2);
   table.appendChild(row);
 
-  table.innerHTML = "";
 
 
   for (const item of data) {
@@ -30,7 +30,7 @@ function tableHozzaadas(day: string, temp: number){
     td1.textContent = day;
     const td2 = document.createElement("td");
     td2.textContent = temp.toString();
-    if (temp > 30) {
+    if (temp > 29) {
       tr.style.backgroundColor = "#ff7f7f";
     } else if (temp < 10) {
       tr.style.backgroundColor = "#85e0ff";
@@ -61,9 +61,13 @@ document.getElementById("submit-btn")?.addEventListener("click", (e) => {
   const now = new Date();
   const day = now.toLocaleDateString("en-US", { weekday: 'long' });
   tableHozzaadas(day, document.getElementById("homerseklet") as HTMLInputElement ? parseInt((document.getElementById("homerseklet") as HTMLInputElement).value) : 0);
-  
+  document.getElementById("homerseklet")!.value = "";
 
 });
+
+// document.getElementById("export")?.addEventListener("click", () => {
+
+// }
 
 
 document.addEventListener('DOMContentLoaded', () => {loadTable()});

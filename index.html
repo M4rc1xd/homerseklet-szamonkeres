@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <form>
-    <input type="number" name="homerseklet" id="homerseklet">
-    <button id="submit-btn" type="submit">Felvétel</button>
+    <div class="row">
+      <div class="col">
+        <input type="number" name="homerseklet" id="homerseklet" class="form-control" required
+          placeholder="Hőmérséklet">
+      </div>
+      <div class="col">
+        <button class="btn btn-primary" id="submit-btn" type="submit">Felvétel</button>
+      </div>
+
+    </div>
+
   </form>
   <table id="table"></table>
 
-  
+  <button class="btn btn-success" id="export">Export</button>
+  <br>
+  <textarea name="JSON" id="exported"></textarea>
+
+
   <script type="module" src="/src/main.ts"></script>
 </body>
+
 </html>
