@@ -67,9 +67,9 @@ document.getElementById("submit-btn")?.addEventListener("click", (e) => {
     ),
   });
   tableIras();
-  document.getElementById("homerseklet")!.value = "";
+  const temp = document.getElementById("homerseklet")! as HTMLInputElement;
+  temp.value = "";
 });
-
 
 document.getElementById("export")?.addEventListener("click", () => {
   const textArea = document.getElementById("exported") as HTMLTextAreaElement;
