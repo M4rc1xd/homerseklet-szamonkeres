@@ -70,6 +70,7 @@ document.getElementById("submit-btn")?.addEventListener("click", (e) => {
   document.getElementById("homerseklet")!.value = "";
 });
 
+
 document.getElementById("export")?.addEventListener("click", () => {
   const textArea = document.getElementById("exported") as HTMLTextAreaElement;
   textArea.value = JSON.stringify(lista);
