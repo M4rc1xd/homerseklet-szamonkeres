@@ -9,11 +9,17 @@
 </head>
 
 <body>
-  <form>
+  <div class="container-fluid mt-3 w3-border w3-padding w3-round ws-grey"> 
+  <form style="margin: 10px">
+    <div class="mt-3 mb-3">
+    <label>Hőmérséklet:</label>
     <input type="number" name="homerseklet" id="homerseklet" class="form-control" required placeholder="Hőmérséklet">
+    </div>
     <button class="btn btn-primary" id="submit-btn" type="submit">Felvétel</button>
-
   </form>
+  </div>
+
+
   <table id="table"></table>
 
   <button class="btn btn-success" id="export">Export</button>
