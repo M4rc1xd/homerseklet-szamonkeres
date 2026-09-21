@@ -1,4 +1,5 @@
 import type { Temp } from "./Temp";
+import './style.css'
 
 async function loadTable() {
   const data = await getData();
@@ -12,18 +13,31 @@ async function loadTable() {
   row.appendChild(header2);
   table.appendChild(row);
 
+  table.innerHTML = "";
+
 
   for (const item of data) {
+    tableHozzaadas(item.day, item.temperature);
+  }
+    
+}
+
+function tableHozzaadas(day: string, temp: number){
+  const table = document.getElementById("table") as HTMLTableElement;
+
     const tr = document.createElement("tr");
     const td1 = document.createElement("td");
-    td1.textContent = item.day;
+    td1.textContent = day;
     const td2 = document.createElement("td");
-    td2.textContent = item.temperature.toString();
+    td2.textContent = temp.toString();
+    if (temp > 30) {
+      tr.style.backgroundColor = "#ff7f7f";
+    } else if (temp < 10) {
+      tr.style.backgroundColor = "#85e0ff";
+    }
     tr.appendChild(td1);
     tr.appendChild(td2);
     table.appendChild(tr);
-  }
-    
 }
 
 async function getData(): Promise<Temp[]> {
@@ -43,11 +57,12 @@ async function getData(): Promise<Temp[]> {
 }
 
 document.getElementById("submit-btn")?.addEventListener("click", (e) => {
-  console.log("asd");
   e.preventDefault();
-  const table = document.getElementById("table") as HTMLTableElement;
-  const temp = document.getElementById("homerseklet") as HTMLInputElement;
-  table.innerHTML = "asdasd" + temp.value;
+  const now = new Date();
+  const day = now.toLocaleDateString("en-US", { weekday: 'long' });
+  tableHozzaadas(day, document.getElementById("homerseklet") as HTMLInputElement ? parseInt((document.getElementById("homerseklet") as HTMLInputElement).value) : 0);
+  
+
 });
 
 
